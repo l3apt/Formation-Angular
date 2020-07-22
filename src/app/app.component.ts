@@ -9,9 +9,35 @@ import { Component } from '@angular/core';
 export class AppComponent {
   isAuth = false;
   
-  appareilOne = 'machine à laver';
-  appareilTwo = 'Television';
-  appareilThree ='Ordinateur';
+  appareils = [
+  {
+    name: 'machine à laver',
+    status: 'éteint'
+  },
+  {
+    name: 'Television',
+    status: 'allumé'
+  },
+  {
+    name: 'Ordinateur',
+    status: 'éteint'
+  }
+    
+  ];
+  
+  //lastUpdate = new Date();
+  
+  lastUpdate = new Promise(
+    (resolve, rejet) =>{
+        const date = new Date();
+        setTimeout(
+            () => {
+                resolve(date);
+                }, 2000
+        )
+    }
+  );
+
 
   constructor() {
     setTimeout(
@@ -23,4 +49,5 @@ export class AppComponent {
   onAllumer(){
     console.log('On allume tout !');
   }
+  
 }
