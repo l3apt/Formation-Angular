@@ -11,6 +11,7 @@ import { AppareilComponent } from './appareil/appareil.component';
 import {AppareilService} from './services/appareil.service';
 import {AuthService} from './services/auth.service';
 import { AuthComponent } from './auth/auth.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 //import des view
 import { AppareilViewComponent } from './appareil-view/appareil-view.component';
@@ -18,12 +19,18 @@ import { AppareilViewComponent } from './appareil-view/appareil-view.component';
 //import des routes
 import {Routes, RouterModule} from '@angular/router';
 import { SingleAppareilComponent } from './single-appareil/single-appareil.component';
+import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 
+// définition des routes
 const appRoutes: Routes = [
-  { path: 'appareils',     component: AppareilViewComponent },
-  { path: 'auth',          component: AuthComponent },
-  { path: '',              component: AppareilViewComponent },
-  { path: 'appareils/:id', component: SingleAppareilComponent}
+  { path: 'appareils', canActivate: [AuthGuard],       component: AppareilViewComponent },
+  { path: 'auth',                                      component: AuthComponent },
+  { path: '',                                          component: AppareilViewComponent },
+  { path: 'appareils/:id', canActivate: [AuthGuard],   component: SingleAppareilComponent},
+  { path: 'not-found',                                 component: FourOhFourComponent},
+  /* mettre la redirection à la fin, car ** signifie tous les chemins*/
+  { path: '**', redirectTo: '/not-found'}
 ];
 
 @NgModule({
@@ -33,7 +40,8 @@ const appRoutes: Routes = [
     AppareilComponent,
     AuthComponent,
     AppareilViewComponent,
-    SingleAppareilComponent
+    SingleAppareilComponent,
+    FourOhFourComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +51,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     AppareilService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
