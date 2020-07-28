@@ -20,9 +20,10 @@ import {Routes, RouterModule} from '@angular/router';
 import { SingleAppareilComponent } from './single-appareil/single-appareil.component';
 
 const appRoutes: Routes = [
-  { path: 'appareils', component: AppareilViewComponent },
-  { path: 'auth',      component: AuthComponent },
-  { path: '',          component: AppareilViewComponent }
+  { path: 'appareils',     component: AppareilViewComponent },
+  { path: 'auth',          component: AuthComponent },
+  { path: '',              component: AppareilViewComponent },
+  { path: 'appareils/:id', component: SingleAppareilComponent}
 ];
 
 @NgModule({
