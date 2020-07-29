@@ -22,6 +22,7 @@ import { SingleAppareilComponent } from './single-appareil/single-appareil.compo
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 
+
 // définition des routes
 const appRoutes: Routes = [
   { path: 'appareils', canActivate: [AuthGuard],       component: AppareilViewComponent },
