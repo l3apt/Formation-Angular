@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AppareilService } from '../services/appareil.service';
 import { Subscription } from 'rxjs/Subscription';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-appareil-view',
