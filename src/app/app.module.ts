@@ -1,14 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
+//communication avec serveur
+import { HttpClientModule } from '@angular/common/http';
+
+//import des modules de formulaire
 import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
-
-
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { MonPremierComponent } from './mon-premier/mon-premier.component';
-import { AppareilComponent } from './appareil/appareil.component';
 
 // import des services
 import {AppareilService} from './services/appareil.service';
@@ -24,6 +22,10 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { EditAppareilComponent } from './edit-appareil/edit-appareil.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { MonPremierComponent } from './mon-premier/mon-premier.component';
+import { AppareilComponent } from './appareil/appareil.component';
 
 //import des routes
 import {Routes, RouterModule} from '@angular/router';
@@ -64,7 +66,8 @@ const appRoutes: Routes = [
     AppRoutingModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
     
   ],
   providers: [
